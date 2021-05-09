@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DailyUI Challenge 001</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<div class="container">
+
+    <h1 class="text-center">Edit</h1>
+    <form class="registration-form" th:method="PATCH" th:action ="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
+
+        <label class="col-one-half" for="firstname">
+            <span class="label-text" id="name">First Name</span>
+        </label>
+        <input type="text" name="name" th:field="*{name}" id="firstname">
+        <div  style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            Surname error
+        </div>
+        <label class="col-one-half" for="lastname">
+            <span class="label-text"  id="surname">Last Name</span>
+        </label>
+        <input type="text" name="lastName" th:field="*{surname}" id="lastname">
+        <div  style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">
+            Surname error
+        </div>
+        <label for="@mail">
+            <span class="label-text" th:field="*{email}" id="email">Email</span>
+        </label>
+        <div  style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+            Surname error
+        </div>
+        <input type="text" name="email" id="@mail">
+
+        <label for="pass">
+            <span class="label-text" th:field="*{password}" id="password">Password</span>
+        </label>
+        <input type="password" name="password" id="pass">
+        <div  style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+            Password error
+        </div>
+        <div class="text-center">
+            <input type="submit" class="submit" name="register" value="Update">
+        </div>
+    </form>
+</div>
+</body>
+</html>
